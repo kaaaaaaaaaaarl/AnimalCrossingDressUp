@@ -12,12 +12,18 @@ public class teksts : MonoBehaviour {
 	public GameObject ievadesLauks;
 	public GameObject tekstaAttelosana;
 	public GameObject ageLauks;
-	public GameObject AgeAttelosana;
+	public GameObject radit;
 
+	void Start(){
+		GameObject.Find("stage1").transform.localScale = new Vector3(0, 0, 0);
+	}
 	public void uzglabaTxt(){
 		txt = ievadesLauks.GetComponent<Text> ().text;
-		tekstaAttelosana.GetComponent<Text>().text = "vards- "+txt;
 		age = ageLauks.GetComponent<Text> ().text;
-		AgeAttelosana.GetComponent<Text>().text = "vecums- "+age;
+		if (txt != "" && age != "") {
+			tekstaAttelosana.GetComponent<Text> ().text = "jus esat " + txt + " ar " + age + " gadiem";
+			GameObject.Find("stage1").transform.localScale = new Vector3(1, 1, 1);
+		}
+
 	}
 }
